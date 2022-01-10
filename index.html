@@ -47,6 +47,24 @@
 // // for in loop
 // ***************
 
+// for in applicable to object key value based and array based. 
+
+// let obj = {
+//    name = "guvi",
+//    age = " 20 "
+// }
+
+// for(var i in obj){
+  
+//   console.log(i,obj[i])
+// }
+
+// template literal
+
+// let a=10
+// let b =20
+// console.log (`fifteen is ${a+b}and not ${a*b}`)
+// console.log('fifteen is'+(a+b)+'and not'(a*b)+'.')
 // let color =["red","yellow","green"]
 
 // for(let key in color){
@@ -60,6 +78,13 @@
 
 
 // // for in loop
+// ****************************
+
+// let a = document.getElementsByTagName("div")
+
+// for (var i in a){
+//   console.log(a[i])
+// }
 
 
 
@@ -87,7 +112,15 @@
 // }
 
  // forEach loop
+//  *****************
+//  syntax: arr.forEach((ele=>(console.log(ele)))
+// it will applicable onely to array
+// it will  take function as parameter
+// will also apply on each and every element of array
+// return type is undefined
 // *************
+// let name =["mani","ram","guvi","saras"]
+// name.forEach((ele)=>(console.log(ele)))
 
 // const name = ["ram","sita","karna","pandav"]
 
@@ -106,8 +139,21 @@
 // })
 // console.log (sum)
 
+// for of loop
+//  *****************
+//  only for forward iteration
+// print elements in the array for variable of arrayname
+// syntax: for(variable of array name)
+// do not applicable to object or key value based
+
+// let arr =[1,2,3,4,5]
+
+// for (let i of arr){
+//   console.log(i)
+// }
 
 // currying or nested function
+// ******************************
 
 // function calABC(a){
 //   return function(b){
@@ -165,26 +211,240 @@
 // console.log(c)
 // console.log([c])
 
-let a = [1,2,3]
-let b =[4,5,6]
-a.push(...b);
-console.log(a)
-console.log([a])
+// let a = [1,2,3]
+// let b =[4,5,6]
+// a.push(...b);
+// console.log(a)
+// console.log([a])
+
+  // REST PARAMETERS
+// ********************
+
+// /* can pass any no. of parameters in the function  - optimised*/
+
+// function calcu(...item){
+
+//   console.log(item)
+//   let sum =0
+//   for (i=0;i<item.length;i++){
+//     sum=sum+item[i]
+    
+//   } return sum
+// }
+
+// console.log(calcu(10,20,30))
+
+
+ // ARRAY DESTRUCTURING
+// ********************
+
+ /* Unpacking array elements in to bunch of variables*/
+
+// let arr=["mani","ram"]
+
+// let[fname,lname] =arr
+
+// console.log(fname,lname)
+// console.log([fname])
+
+// let [fname,,,lname]=["mani","ram","guvi","saras"]
+// console.log(fname,lname)
+
+
+// SET Time Out : is a method having two parameters. One is function and another
+// one is number millisecond
+
+// setTimeout(function(){
+
+//   console.log("1. App start")
+// },3000)
+
+// setTimeout(function(){
+
+// console.log("2. App start")
+// },2000)
+
+// CALLBACK callback Quee,call stack,webserver
+// to convert a non-blocking code in to blocking code we using the concept called callBack.
+
+// Js is Non-blocking code;
+// it is asyncronous code;
+// it is single threaded language;
+
+// syntax:
+// function execute(value1,value2,cb){
+// setTimeout(function(){
+//   var result = value1+value2
+//   cb(result)
+
+// },5000)
+  
+// }
+// execute(10,5, function(resultData){
+//   console.log(resultData)
+// })
+
+// promise - fetch
+// ****************
+// syntax:
+// fetch("url").then(function(data){
+//   console.log(data)}).catch(function(error){console.log(error)})
+
+//  fetch("url");
+//  .then (function(data){
+//    return data.json()
+//  }).then(function(dataObj){
+// var list = document.getElementById("list")
+// dataObj.forEach(element=>{
+// var li =document.createElementById("li")
+// li.innerText =element.productName
+// list.appendChild("li")
+
+// })
+//  })
+// .catch(function(error){
+//   console.log(error)
+// })
+
+// function calculateAge(year){
+
+//   return newPromise(function(resolve,reject){/*pemdimg*/
+//         setTimeout(function(){
+//           var today = new Date()
+//           var age =today.getFullYear()-year
+//           if(age<18){
+//             resolve(age)
+//           }else{
+//             reject("no eligible")
+//           }
+
+//         },3000)
+
+//   })
+// }
+// calculateAge(2021).then (function(data){
+
+//   console.log(data)
+
+// }).catch(function(error){console.log(error)})
+
+// async await function
+// ***************************
+// async function getAllData(){
+//   try{
+//     var data = await fetch("url")
+//     var obj = await data.json()
+//     console.log(obj)
+
+// }catch(error){
+//   console.log(error)
+// }
+// }
+
+
+// CRUD OPERATION
+// ***************************
+
+// Create   Get
+// Read     Post
+// Update   Put
+// Delete   Delete
+
+
+//  document. getElementById
+//  document.getElementsByClassName
+//  document.getElementsByTagName
+
+// already hrml elements are there we are supposed to print those elements in console
+// The elements must be in html file. otherwise it will not work.
+
+// query selector vs query selector getAllData
+
+// based upon the selector the first occurance of the selector
+
+// Query selector all will retrive all the elements whose selctor must be 
+// there. out put will be an array
+
+// let a = document.querySelectorAll(`.main`)
+// console.log(a)
+
+// using append we can add multiple elements
+// the return type of append is always undefined
+
+// using appendchild we can add only one Element
+// the return type of append child is added element.Element
+
+// function foo(){
+
+//   console.log ("Hello")
+// }
+// foo()
+
+
+// let res =document.getElementsByTagName('button').addEventListener('click', foo)
+
+// function foo(){
+//   let result = document.getElementsById('name').value
+//   console.log(result)
+// }
+// foo()
+
+// let button = document.createElement('button')
+// button.innerHTML ="click"
+// button.addEventListener('click',foo)
+// document.body.append(button)
+
+// function foo(){
+//   var div = document.createElement('div')
+//   div.innerHTML ="this is div"
+//   div.style.color = "green" 
+//   div.style.fontSize = "30px"
+//   document.body.append(div)
+// }
+
+// // innerText is just create a Text
+// // inner HTML create a element
+
+// document.querySelector('div').addEventListener('mouseover',foo)
+
+// function foo(event){
+//   var p = document.createElement('p')
+//   p.setAttribute('class','text-primary')
+//   p.innerHTML =`client X:${event.clientX} and client Y: ${event.clientY}`
+//   document.body.append(p)
+// }
+
+
+// document.querySelector('button').addEventListener('click',foo)
+
+// function foo(){
+  
+//   let res =prompt("enter any value")
+//   let p = document.createElement('p')
+//   p.innerHTML =res
+//   p.style.fontSize ="30px"
+//   document.body.append(p)
+// }
 
 
 
+var span =document.createElement('span')
+span.innerHTML ="this is span"
+span.addEventListener('mouseover',foo)
+document.body.append(span)
 
+var br =document.createElement('br')
+document.body.appendChild(br)
 
+function foo(){
 
+  document.querySelector('span').style.color ="red"
 
+}
 
-
-
-
-
-
-
-
+var inp = document.createElement('input')
+inp.setAttribute('type','textarea')
+document.body.append(inp)
 
 </script>  
 </body>
