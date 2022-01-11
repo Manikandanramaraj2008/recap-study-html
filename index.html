@@ -266,10 +266,19 @@
 
 // CALLBACK callback Quee,call stack,webserver
 // to convert a non-blocking code in to blocking code we using the concept called callBack.
+Also the function simply accepts another function as parameter
+that parameter function is nothing but called as callback function
+only for short asyn operation.
+Ex. setTimeout(() => {
+  
+}, timeout);
+
 
 // Js is Non-blocking code;
 // it is asyncronous code;
 // it is single threaded language;
+// call back used only for short async operations set time out.
+
 
 // syntax:
 // function execute(value1,value2,cb){
@@ -284,8 +293,101 @@
 //   console.log(resultData)
 // })
 
+
+// call back hell - nested structure. we donot use larger functions only for short async function
+
+// function f1{
+//   function f2{
+//     function f3{
+//       function f4{
+//         function f5{
+ //        console.log("Done")
+//         }
+//       }
+//     }
+//   }
+// }
+
 // promise - fetch
 // ****************
+// promise return data type is object
+// return an object result of async operation
+// why promise: to overcome from the callback hell in js.
+// 3 states : pending,resolved,rejected
+// initial state pending when we create promise
+
+// pending to fullfilled when complete an asyn operation successfully(resolve)
+// pendng to rejected when async oper fails.(reject)
+
+// syntax is variable name= new Promise()
+// this object has function as parameter
+// inside the function we have resolve and reject
+
+// .then is access the success of the resolved state
+// .catch is access the failiure of the rejected state
+// output of the promise is object
+//  to access the result of promise we use .then and .catch
+
+// advantages of Promise
+// it return always the promise.
+// usage of promise is return type of function 
+// can use to handle multiple async function operation.
+
+// disadvantage promise chain
+
+// function foo(){ 
+//   return new promise((resolve,reject)=>{
+//     resolve ("this is resolved")
+//     reject("this is rejected")
+
+//   })
+// }foo().then((data)=>{console.log(data)}).catch((error)=>{console.log(error)})
+
+// function foo(){ 
+//   return new promise((resolve,reject)=>{
+//     setTimeout(() => {
+
+//       resolve("Hello Mani")
+      
+//     }, 4000);
+
+//   })
+// }foo().then((data)=>{console.log(data)}).catch((error)=>{console.log(error)})
+
+
+// let res =fetch("url")
+// console.log(res)
+// res.then((data)=>{return data.json()})
+// .then((data)=>console.log(data)).catch((error)=>console.log(error))
+
+// function foo(){
+
+//   console.log(data)
+//   console.log(data.TN.district.chennai)
+// }
+
+// function foo(data){
+
+//   for(var i in data){
+//     console.log(`confirmed:${data[i].confirmed) Active: ${data[i].Active}`)
+//   }
+// }
+
+// Promise chain
+// *****************
+// function mul(num){
+//   return new Promise((resolve, reject)=>{
+
+//   setTimeout(() => {
+//     resolve(2*num)},2000)
+    
+//   });
+// }
+// mul(5).then((v1)=>{console.log(v1)
+//   return mul(v1)}).then((v2)=>{console.log(v2);
+//   return mul(v2)}).then((v3)=>{console.log(v3);
+//   return mul(v3)})
+//   // .catch((error)=>{console.log(error)}
 // syntax:
 // fetch("url").then(function(data){
 //   console.log(data)}).catch(function(error){console.log(error)})
@@ -327,6 +429,17 @@
 //   console.log(data)
 
 // }).catch(function(error){console.log(error)})
+
+// var a=4
+// let p1 = new Promise((resolve,reject)=>{
+//   if (a>3){
+//     resolve("app start 1")
+//   }else{
+//     reject ("app end 2")
+//   }
+// })
+//  console.log(p1)
+// console.log(3)
 
 // async await function
 // ***************************
@@ -428,23 +541,127 @@
 
 
 
-var span =document.createElement('span')
-span.innerHTML ="this is span"
-span.addEventListener('mouseover',foo)
-document.body.append(span)
+// var span =document.createElement('span')
+// span.innerHTML ="this is span"
+// span.addEventListener('mouseover',foo)
+// document.body.append(span)
 
-var br =document.createElement('br')
-document.body.appendChild(br)
+// var br =document.createElement('br')
+// document.body.appendChild(br)
 
-function foo(){
+// function foo(){
 
-  document.querySelector('span').style.color ="red"
+//   document.querySelector('span').style.color ="red"
 
-}
+// }
 
-var inp = document.createElement('input')
-inp.setAttribute('type','textarea')
-document.body.append(inp)
+// var inp = document.createElement('input')
+// inp.setAttribute('type','textarea')
+// document.body.append(inp)
+
+// MRF - Map,Reduce,Filter - inbuild functions only can use for array.
+ 
+// Map 
+// will applicable only to array
+// will take fuction as parameter
+// will apply to each and every element of the array
+// it will return the new array.Filter
+
+// function taken the element as parameter
+// result is new array
+
+// syntax: array.map(function)
+
+// if no function is passed it will throw error. output is undefined
+// *******************************************************************************
+
+// let arr = [1,2,3,4]
+// let result = arr.map((element)=>element*2)
+// console.log(result)
+
+// accessing the marks by increase 10
+// ************************************************
+
+// let stud = [{name:"mani",marks:"50"},{name: "Ram",marks: "60"}]
+
+// var res = stud.map((element)=>{
+//   element.marks+10
+// return element})
+// console.log(res)
+
+// let stud = [{name:"mani",marks:"50"},{name: "Ram",marks: "60"},{name:"sita",marks:"40"}]
+
+//  var res = stud.filter((item)=>{
+//  if (item.marks>50)
+//   return item})
+// console.log(res)
+
+// var res = stud.filter((item)=>item.marks>50).map((item)=>item.name)
+// console.log(res)
+
+// Reduce
+// **************
+
+// reduce will reduce entire array in to single values
+// syntax: array name.reduce(function)
+// acc- accumulator it will take first index value as parameter
+// ele- Element
+
+// if acc not defined
+
+// let arr=[1,2,3,4]
+// let sum = arr.reduce((acc,item)=>acc+item,100)
+// console.log(sum)
+
+// if acc not defined - acc will take as initial value. change the array in to single value
+
+// DOM
+// ****************
+
+// TO create HTML elements dynamically by using Js.
+// operations: all are methods(inbuilt)in Js only
+
+// How to create elements dynamically ?
+
+// only html elements
+// Element: combination of tag+content
+// content: to add content use inner HTML
+// to add the tag in body of HTML file.HTML
+// document.body.append(variable name)
+
+// How to add attribute to an HTML Element
+
+// class,id, href...
+
+
+// var paragraph = document.createElement('p')
+// paragraph.innerHTML ="this is p"
+// document.body.append(paragraph)
+
+
+
+
+
+// SetAttribute:
+// * **************
+
+// two parameters
+// 1st parameter class,id, selectors
+// 2nd parameter class name/id name
+// Example
+// <div class="main">this is SetAttribute</div>
+
+
+
+// var input = document.createElement('input')
+// input.setAttribute('type','text')
+// input.setAttribute('name','text')
+// input.setAttribute('id','text')
+// document.body.append(input);
+
+
+
+// 
 
 </script>  
 </body>
